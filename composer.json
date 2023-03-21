@@ -22,13 +22,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Descom\\Skeleton\\": "src",
-            "Descom\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Descom\\DescommarketSeo\\": "src",
+            "Descom\\DescommarketSeo\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Descom\\Skeleton\\Tests\\": "tests"
+            "Descom\\DescommarketSeo\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -40,7 +40,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Descom\\Skeleton\\SkeletonServiceProvider"
+                "Descom\\DescommarketSeo\\DescommarketSeoServiceProvider"
             ]
         }
     },

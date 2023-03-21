@@ -1,6 +1,6 @@
 <?php
 
-namespace Descom\Skeleton\Console;
+namespace Descom\DescommarketSeo\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -9,11 +9,11 @@ class Install extends Command
 {
     protected $signature = 'skeleton:install';
 
-    protected $description = 'Install package Skeleton';
+    protected $description = 'Install package DescommarketSeo';
 
     public function handle()
     {
-        $this->info('Installing package Skeleton...');
+        $this->info('Installing package DescommarketSeo...');
 
         $this->info('Publishing configuration...');
 
@@ -27,7 +27,7 @@ class Install extends Command
             }
         }
 
-        $this->info('Installed package Skeleton');
+        $this->info('Installed package DescommarketSeo');
     }
 
     private function configExists($fileName)
@@ -48,7 +48,7 @@ class Install extends Command
         $this->info('Overwriting configuration file...');
 
         $params = [
-            '--provider' => "Descom\Skeleton\SkeletonServiceProvider",
+            '--provider' => "Descom\DescommarketSeo\DescommarketSeoServiceProvider",
             '--tag' => 'config',
         ];
 

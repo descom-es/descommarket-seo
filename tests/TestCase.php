@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\Skeleton\Tests;
+namespace Descom\DescommarketSeo\Tests;
 
-use Descom\Skeleton\SkeletonServiceProvider;
+use Descom\DescommarketSeo\DescommarketSeoServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -15,7 +15,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            DescommarketSeoServiceProvider::class,
         ];
     }
 
