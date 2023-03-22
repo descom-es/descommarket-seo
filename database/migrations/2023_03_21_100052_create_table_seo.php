@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('key', 30);
             $table->json('payload');
             $table->timestamps();
-            $table->unique(['seable','key']);
+            $table->unique(['seable', 'key']);
         });
     }
 

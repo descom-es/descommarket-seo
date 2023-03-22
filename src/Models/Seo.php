@@ -9,6 +9,8 @@ class Seo extends Model
 {
     use HasFactory;
 
+    protected $table = 'seo';
+
     protected $fillable = [
         "seable",
         "key",
