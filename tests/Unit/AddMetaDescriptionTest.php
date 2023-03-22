@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AddMetaDescriptionTest extends TestCase
 {
-
     use RefreshDatabase;
 
     public function testCreateMetaDescription()

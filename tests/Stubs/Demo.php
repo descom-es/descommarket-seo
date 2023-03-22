@@ -9,7 +9,6 @@ class Demo extends Model
 {
     use HasSeo;
 
-
     public function getAttribute($key)
     {
         return 1;
