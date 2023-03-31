@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seo', function (Blueprint $table) {
+        Schema::create('meta', function (Blueprint $table) {
             $table->id();
             $table->morphs('seable');
             $table->string('key', 30);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seo');
+        Schema::dropIfExists('meta');
     }
 };

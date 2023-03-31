@@ -5,11 +5,11 @@ namespace Descom\DescommarketSeo\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seo extends Model
+class Meta extends Model
 {
     use HasFactory;
 
-    protected $table = 'seo';
+    protected $table = 'meta';
 
     protected $fillable = [
         "seable",

@@ -2,12 +2,12 @@
 
 namespace Descom\DescommarketSeo\Tests\Stubs;
 
-use Descom\DescommarketSeo\Traits\HasSeo;
+use Descom\DescommarketSeo\Traits\HasMeta;
 use Illuminate\Database\Eloquent\Model;
 
 class Demo extends Model
 {
-    use HasSeo;
+    use HasMeta;
 
     public function getAttribute($key)
     {

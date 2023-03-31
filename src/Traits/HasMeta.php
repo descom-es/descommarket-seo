@@ -2,14 +2,14 @@
 
 namespace Descom\DescommarketSeo\Traits;
 
-use Descom\DescommarketSeo\Models\Seo;
+use Descom\DescommarketSeo\Models\Meta;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-trait HasSeo
+trait HasMeta
 {
-    public function seo(): MorphMany
+    public function meta(): MorphMany
     {
-        return $this->morphMany(Seo::class, 'seable');
+        return $this->morphMany(Meta::class, 'seable');
     }
 
     public function addMetaDescription(string $description, ?string $lang = null): void
@@ -19,12 +19,12 @@ trait HasSeo
 
     private function addMeta(string $key, string $value, ?string $lang = null): void
     {
-        $payload = $this->seo()->select('payload')->where('key', $key)->first()->payload ?? (object)[];
+        $payload = $this->meta()->select('payload')->where('key', $key)->first()->payload ?? (object)[];
         $lang = $lang ?? config('app.lang');
 
         $payload->$lang = $value;
 
-        $this->seo()->updateOrCreate(
+        $this->meta()->updateOrCreate(
             [
                 'key' => $key,
 
