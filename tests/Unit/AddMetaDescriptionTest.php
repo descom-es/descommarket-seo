@@ -34,4 +34,62 @@ class AddMetaDescriptionTest extends TestCase
             'payload->es' => $es,
         ]);
     }
+
+    public function testCreateMetasDescriptionArray()
+    {
+        $demo = new Demo();
+
+        $es = 'Mejor producto';
+        $es2 = 'Mejor producto 2';
+
+        $metas = [
+            [
+                'key' => 'title',
+                'value' => $es,
+            ],
+            [
+                'key' => 'description',
+                'value' => $es2,
+
+            ],
+        ];
+
+        $demo->addMetas($metas);
+
+        $this->assertDatabaseHas('seo', [
+            'seable_id' => $demo->getKey(),
+            'key' => 'title',
+            'payload->es' => $es,
+        ]);
+
+        $this->assertDatabaseHas('seo', [
+            'seable_id' => $demo->getKey(),
+            'key' => 'description',
+            'payload->es' => $es2,
+        ]);
+
+        $en = 'Best product';
+        $en2 = 'Best product 2';
+
+        $metas = [
+            [
+                'key' => 'title',
+                'value' => $en,
+            ],
+            [
+                'key' => 'description',
+                'value' => $en2,
+
+            ],
+        ];
+
+        $demo->addMetas($metas, 'en');
+
+        $this->assertDatabaseHas('seo', [
+            'seable_id' => $demo->getKey(),
+            'key' => 'title',
+            'payload->en' => $en,
+            'payload->es' => $es,
+        ]);
+    }
 }
