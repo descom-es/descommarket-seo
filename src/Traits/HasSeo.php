@@ -34,4 +34,12 @@ trait HasSeo
             ]
         );
     }
+
+
+    private function addMetas(array $metas, ?string $lang = null)
+    {
+        foreach ($metas as $meta) {
+            $this->addMeta($meta['key'], $meta['value'], $lang);
+        }
+    }
 }
