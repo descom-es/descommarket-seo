@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('meta', function (Blueprint $table) {
             $table->id();
-            $table->morphs('seable');
+            $table->morphs('seoable');
             $table->string('key', 30);
             $table->json('payload');
             $table->timestamps();
-            $table->unique(['seable', 'key']);
+            $table->unique(['seoable', 'key']);
         });
     }
 

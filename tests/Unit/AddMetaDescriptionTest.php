@@ -17,19 +17,17 @@ class AddMetaDescriptionTest extends TestCase
         $es = 'Mejor producto';
         $en = 'Best product';
 
-
-
         $demo->addMetaDescription($es);
 
         $this->assertDatabaseHas('meta', [
-            'seable_id' => $demo->getKey(),
+            'seoable_id' => $demo->getKey(),
             'payload->es' => $es,
         ]);
 
         $demo->addMetaDescription($en, "en");
 
         $this->assertDatabaseHas('meta', [
-            'seable_id' => $demo->getKey(),
+            'seoable_id' => $demo->getKey(),
             'payload->en' => $en,
             'payload->es' => $es,
         ]);
@@ -57,13 +55,13 @@ class AddMetaDescriptionTest extends TestCase
         $demo->addMetas($metas);
 
         $this->assertDatabaseHas('meta', [
-            'seable_id' => $demo->getKey(),
+            'seoable_id' => $demo->getKey(),
             'key' => 'title',
             'payload->es' => $es,
         ]);
 
         $this->assertDatabaseHas('meta', [
-            'seable_id' => $demo->getKey(),
+            'seoable_id' => $demo->getKey(),
             'key' => 'description',
             'payload->es' => $es2,
         ]);
@@ -86,7 +84,7 @@ class AddMetaDescriptionTest extends TestCase
         $demo->addMetas($metas, 'en');
 
         $this->assertDatabaseHas('meta', [
-            'seable_id' => $demo->getKey(),
+            'seoable_id' => $demo->getKey(),
             'key' => 'title',
             'payload->en' => $en,
             'payload->es' => $es,

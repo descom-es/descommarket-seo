@@ -9,7 +9,7 @@ trait HasMeta
 {
     public function meta(): MorphMany
     {
-        return $this->morphMany(Meta::class, 'seable');
+        return $this->morphMany(Meta::class, 'seoable');
     }
 
     public function addMetaDescription(string $description, ?string $lang = null): void

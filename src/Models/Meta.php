@@ -12,7 +12,7 @@ class Meta extends Model
     protected $table = 'meta';
 
     protected $fillable = [
-        "seable",
+        "seoable",
         "key",
         "payload",
     ];
