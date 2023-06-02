@@ -1,6 +1,6 @@
 {
-    "name": "descom/skeleton",
-    "description": "Template to generate a Laravel Package",
+    "name": "descom/descommarket-seo",
+    "description": "Descommarket SEO",
     "license": "MIT",
     "authors": [
         {
@@ -22,13 +22,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Descom\\DescommarketSeo\\": "src",
-            "Descom\\DescommarketSeo\\Database\\Factories\\": "database/factories"
+            "Descommarket\\Seo\\": "src",
+            "Descommarket\\Seo\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Descom\\DescommarketSeo\\Tests\\": "tests"
+            "Descommarket\\Seo\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -40,7 +40,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Descom\\DescommarketSeo\\DescommarketSeoServiceProvider"
+                "Descommarket\\Seo\\DescommarketSeoServiceProvider"
             ]
         }
     },
