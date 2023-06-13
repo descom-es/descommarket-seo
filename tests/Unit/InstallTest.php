@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\DescommarketSeo\Tests\Unit;
+namespace DescomMarket\Seo\Tests\Unit;
 
-use Descom\DescommarketSeo\Tests\TestCase;
+use DescomMarket\Seo\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 

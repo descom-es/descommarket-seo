@@ -1,6 +1,6 @@
 <?php
 
-namespace Descom\DescommarketSeo\Models;
+namespace DescomMarket\Seo\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

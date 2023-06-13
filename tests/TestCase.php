@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\DescommarketSeo\Tests;
+namespace DescomMarket\Seo\Tests;
 
-use Descom\DescommarketSeo\DescommarketSeoServiceProvider;
+use DescomMarket\Seo\DescommarketSeoServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

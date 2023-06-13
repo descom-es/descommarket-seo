@@ -1,9 +1,9 @@
 <?php
 
-namespace Descom\DescommarketSeo\Tests\Unit;
+namespace DescomMarket\Seo\Tests\Unit;
 
-use Descom\DescommarketSeo\Tests\Stubs\Demo;
-use Descom\DescommarketSeo\Tests\TestCase;
+use DescomMarket\Seo\Tests\Stubs\Demo;
+use DescomMarket\Seo\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AddMetaDescriptionTest extends TestCase

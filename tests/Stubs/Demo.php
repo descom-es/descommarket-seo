@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\DescommarketSeo\Tests\Stubs;
+namespace DescomMarket\Seo\Tests\Stubs;
 
-use Descom\DescommarketSeo\Traits\HasMeta;
+use DescomMarket\Seo\Traits\HasMeta;
 use Illuminate\Database\Eloquent\Model;
 
 class Demo extends Model

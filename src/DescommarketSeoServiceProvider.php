@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\DescommarketSeo;
+namespace DescomMarket\Seo;
 
-use Descom\DescommarketSeo\Console\Install;
+use DescomMarket\Seo\Console\Install;
 use Illuminate\Support\ServiceProvider;
 
 class DescommarketSeoServiceProvider extends ServiceProvider

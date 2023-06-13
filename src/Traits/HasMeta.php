@@ -1,8 +1,8 @@
 <?php
 
-namespace Descom\DescommarketSeo\Traits;
+namespace DescomMarket\Seo\Traits;
 
-use Descom\DescommarketSeo\Models\Meta;
+use DescomMarket\Seo\Models\Meta;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasMeta

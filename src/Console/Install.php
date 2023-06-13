@@ -1,6 +1,6 @@
 <?php
 
-namespace Descom\DescommarketSeo\Console;
+namespace DescomMarket\Seo\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -48,7 +48,7 @@ class Install extends Command
         $this->info('Overwriting configuration file...');
 
         $params = [
-            '--provider' => "Descom\DescommarketSeo\DescommarketSeoServiceProvider",
+            '--provider' => "DescomMarket\Seo\DescommarketSeoServiceProvider",
             '--tag' => 'config',
         ];
 
