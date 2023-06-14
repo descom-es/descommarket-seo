@@ -3,42 +3,45 @@
 namespace DescomMarket\Seo\Traits;
 
 use DescomMarket\Seo\Models\Meta;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasMeta
 {
-    public function meta(): MorphMany
+    public function meta(): MorphOne
     {
-        return $this->morphMany(Meta::class, 'seoable');
+        return $this->morphOne(Meta::class, 'seoable');
     }
 
     public function addMetaDescription(string $description, ?string $lang = null): void
     {
-        $this->addMeta('meta_description', $description, $lang);
+        $this->addMeta('description', $description, $lang);
     }
 
-    private function addMeta(string $key, string $value, ?string $lang = null): void
+    public function addMeta(string $key, string $value, ?string $lang = null): void
     {
-        $payload = $this->meta()->select('payload')->where('key', $key)->first()->payload ?? (object)[];
-        $lang = $lang ?? config('app.lang');
+        $meta = $this->meta()->first() ?? new Meta([
+            'payload' => new \stdClass()
+        ]);
 
-        $payload->$lang = $value;
+        $lang = $lang ?? config('app.locale');
 
-        $this->meta()->updateOrCreate(
-            [
-                'key' => $key,
+        $currentPayload = json_decode(json_encode($meta->payload), true);
+        $meta->payload = array_merge($currentPayload, [
+            $lang => array_merge(
+                $currentPayload[$lang] ?? [],
+                [
+                    $key => $value,
+                ],
+            ),
+        ]);
 
-            ],
-            [
-                'payload' => $payload,
-            ]
-        );
+        $this->meta()->save($meta);
     }
 
     public function addMetas(array $metas, ?string $lang = null)
     {
-        foreach ($metas as $meta) {
-            $this->addMeta($meta['key'], $meta['value'], $lang);
+        foreach ($metas as $key => $value) {
+            $this->addMeta($key, $value, $lang);
         }
     }
 }

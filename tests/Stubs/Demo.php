@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Demo extends Model
 {
     use HasMeta;
-
-    public function getAttribute($key)
-    {
-        return 1;
-    }
 }

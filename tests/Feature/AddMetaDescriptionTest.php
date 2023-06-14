@@ -12,82 +12,65 @@ class AddMetaDescriptionTest extends TestCase
 
     public function testCreateMetaDescription()
     {
-        $demo = new Demo();
+        $demo = Demo::first();
 
         $es = 'Mejor producto';
         $en = 'Best product';
 
         $demo->addMetaDescription($es);
 
-        $this->assertDatabaseHas('meta', [
+        $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
-            'payload->es' => $es,
+            'payload->es->description' => $es,
         ]);
 
         $demo->addMetaDescription($en, "en");
 
-        $this->assertDatabaseHas('meta', [
+        $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
-            'payload->en' => $en,
-            'payload->es' => $es,
+            'payload->en->description' => $en,
+            'payload->es->description' => $es,
         ]);
     }
 
     public function testCreateMetasDescriptionArray()
     {
-        $demo = new Demo();
+        $demo = Demo::first();
 
         $es = 'Mejor producto';
         $es2 = 'Mejor producto 2';
 
         $metas = [
-            [
-                'key' => 'title',
-                'value' => $es,
-            ],
-            [
-                'key' => 'description',
-                'value' => $es2,
-
-            ],
+            'title' => $es,
+            'description' => $es2,
         ];
 
         $demo->addMetas($metas);
 
-        $this->assertDatabaseHas('meta', [
+        $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
-            'key' => 'title',
-            'payload->es' => $es,
+            'payload->es->title' => $es,
         ]);
 
-        $this->assertDatabaseHas('meta', [
+        $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
-            'key' => 'description',
-            'payload->es' => $es2,
+            'payload->es->description' => $es2,
         ]);
 
         $en = 'Best product';
         $en2 = 'Best product 2';
 
         $metas = [
-            [
-                'key' => 'title',
-                'value' => $en,
-            ],
-            [
-                'key' => 'description',
-                'value' => $en2,
-
-            ],
+            'title' => $en,
+            'description' => $en2,
         ];
 
         $demo->addMetas($metas, 'en');
 
-        $this->assertDatabaseHas('meta', [
+        $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
-            'key' => 'title',
-            'payload->en' => $en,
-            'payload->es' => $es,
+            'payload->en->title' => $en,
+            'payload->es->title' => $es,
         ]);
     }
 }
