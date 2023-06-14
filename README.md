@@ -1,18 +1,36 @@
-# Laravel Package Skeleton
+# DescomMarket Seo
 
-[![tests](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/tests.yml/badge.svg)](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/tests.yml)
-[![analyze](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/analyze.yml/badge.svg)](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/analyze.yml)
-[![style](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/style_fix.yml/badge.svg)](https://github.com/descom-es/laravel-package-skeleton/actions/workflows/style_fix.yml)
+[![tests](https://github.com/descom-es/descommarket-seo/actions/workflows/tests.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/tests.yml)
+[![analyze](https://github.com/descom-es/descommarket-seo/actions/workflows/analyze.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/analyze.yml)
 
-After clone this package, you can replace in all files content `Skeleton` with
-your Custom NameSpace.
-
-sample:
+## Installation
 
 ```bash
-find {src,tests,database,config,stubs,composer.json} -type f -exec sed -I '' 's/Skeleton/CustomPackage/g' {} \;
-find {src,tests,database,config,stubs,composer.json} -type f -exec sed -I '' 's/skeleton/custom_package/g' {} \;
-mv src/SkeletonServiceProvider.php src/CustomPackageServiceProvider.php
-composer dump
-./vendor/bin/phpunit
+composer require descom-es/descommarket-seo
+php artisan migrate
+```
+
+## Usage
+
+### Configure yor model to use Seo
+
+Add Trait `DescomMarket\Seo\Traits` in your Model that required Seo.
+
+### Add Seo to your model
+
+```php
+    $product->addMeta('title', 'new title to product');
+    $product->addMeta('description', 'Meta description to product');
+```
+
+### Get MetaResource to your API
+
+```php
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->id,
+            'meta' => $this->whenLoaded('meta', new MetaResource($this->meta)),
+        ];
+    }
 ```
