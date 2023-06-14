@@ -8,12 +8,11 @@ on:
 
 jobs:
   phpunit:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        php-versions: ['8.2', '8.1', '8.0']
+        php: ['8.2', '8.1', '8.0']
         laravel: [9.*, 10.*]
         include:
           - laravel: 9.*
@@ -43,7 +42,7 @@ jobs:
         path: vendor
         key: ${{ runner.os }}-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-        
+
           ${{ runner.os }}-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
