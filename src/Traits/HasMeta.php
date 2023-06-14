@@ -20,7 +20,7 @@ trait HasMeta
     public function addMeta(string $key, string $value, ?string $lang = null): void
     {
         $meta = $this->meta()->first() ?? new Meta([
-            'payload' => new \stdClass()
+            'payload' => new \stdClass(),
         ]);
 
         $lang = $lang ?? config('app.locale');

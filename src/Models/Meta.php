@@ -32,13 +32,12 @@ class Meta extends Model
         $lang = $langDefault;
 
         return Attribute::make(
-            get: fn ($value) =>  $this->payload->$lang
+            get: fn ($value) => $this->payload->$lang
                 ?? $this->payload->$langDefault
                 ?? $this->payload->$langFallback
                 ?? null
         );
     }
-
 
     public function getMetaByLang(string $lang = null): ?object
     {
