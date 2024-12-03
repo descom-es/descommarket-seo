@@ -39,7 +39,7 @@ class Meta extends Model
         );
     }
 
-    public function getMetaByLang(string $lang = null): ?object
+    public function getMetaByLang(?string $lang = null): ?object
     {
         $langDefault = config('app.locale');
         $langFallback = config('app.fallback_locale');
