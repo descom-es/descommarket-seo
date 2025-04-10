@@ -1,5 +1,5 @@
 includes:
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/larastan/larastan/extension.neon
 
 parameters:
 
@@ -10,4 +10,6 @@ parameters:
     # The level 9 is the highest level
     level: 5
 
-    checkMissingIterableValueType: false
+    ignoreErrors:
+        - message: '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$payload#'
+          path: src/Traits/HasMeta.php
