@@ -18,6 +18,7 @@ class Meta extends Model
     protected $fillable = [
         "seoable",
         "payload",
+        "robots",
     ];
 
     protected $casts = [
@@ -32,10 +33,23 @@ class Meta extends Model
         $lang = $langDefault;
 
         return Attribute::make(
-            get: fn ($value) => $this->payload->$lang
+            get: function ($value) use ($lang, $langDefault, $langFallback) {
+                $data = $this->payload->$lang
                 ?? $this->payload->$langDefault
-                ?? $this->payload->$langFallback
-                ?? null
+                ?? $this->payload->$langFallback;
+
+                $result = [];
+
+                if ($data) {
+                    $result = (array) $data;
+                }
+
+                if (!is_null($this->robots)) {
+                    $result['robots'] = $this->robots;
+                }
+
+                return empty($result) ? null : $result;
+            },
         );
     }
 
