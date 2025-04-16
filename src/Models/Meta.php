@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property object|array $payload
+ * @property string|null $robots
  */
 class Meta extends Model
 {
