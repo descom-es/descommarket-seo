@@ -41,7 +41,20 @@ trait HasMeta
     public function addMetas(array $metas, ?string $lang = null)
     {
         foreach ($metas as $key => $value) {
+            if($key === 'robots') {
+                $this->addRobots($value);
+                continue;
+            }
+
             $this->addMeta($key, $value, $lang);
         }
+    }
+
+    public function addRobots(string $robots): void
+    {
+        $meta = $this->meta()->first() ?? new Meta(['payload' => new \stdClass()]);
+
+        $meta->robots = $robots;
+        $this->meta()->save($meta);
     }
 }

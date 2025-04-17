@@ -13,3 +13,5 @@ parameters:
     ignoreErrors:
         - message: '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$payload#'
           path: src/Traits/HasMeta.php
+        - message: '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$robots#'
+          path: src/Traits/HasMeta.php
