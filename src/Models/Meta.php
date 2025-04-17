@@ -33,7 +33,7 @@ class Meta extends Model
             get: function () {
                 $meta = $this->getMetaByLang();
 
-                if (!empty($this->robots)) {
+                if (! empty($this->robots)) {
                     $meta->robots = $this->robots;
                 }
 
