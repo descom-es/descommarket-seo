@@ -52,7 +52,7 @@ trait HasMeta
 
     public function addRobots(string $robots): void
     {
-        $meta = $this->meta()->first() ?? new Meta();
+        $meta = $this->meta()->first() ?? new Meta(['payload' => new \stdClass()]);
 
         $meta->robots = $robots;
         $this->meta()->save($meta);

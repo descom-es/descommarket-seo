@@ -5,6 +5,7 @@ namespace DescomMarket\Seo\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use stdClass;
 
 /**
  * @property object|array $payload
@@ -28,33 +29,20 @@ class Meta extends Model
 
     public function metaData(): Attribute
     {
-        $langDefault = config('app.locale');
-        $langFallback = config('app.fallback_locale');
-
-        $lang = $langDefault;
-
         return Attribute::make(
-            get: function ($value) use ($lang, $langDefault, $langFallback) {
-                $data = $this->payload->$lang
-                ?? $this->payload->$langDefault
-                ?? $this->payload->$langFallback;
+            get: function () {
+                $meta = $this->getMetaByLang();
 
-                $result = [];
-
-                if ($data) {
-                    $result = (array) $data;
+                if (!empty($this->robots)) {
+                    $meta->robots = $this->robots;
                 }
 
-                if (!is_null($this->robots)) {
-                    $result['robots'] = $this->robots;
-                }
-
-                return empty($result) ? null : $result;
+                return $meta;
             },
         );
     }
 
-    public function getMetaByLang(?string $lang = null): ?object
+    public function getMetaByLang(?string $lang = null): object
     {
         $langDefault = config('app.locale');
         $langFallback = config('app.fallback_locale');
@@ -62,6 +50,6 @@ class Meta extends Model
         return $this->payload->$lang
             ?? $this->payload->$langDefault
             ?? $this->payload->$langFallback
-            ?? null;
+            ?? new stdClass();
     }
 }
