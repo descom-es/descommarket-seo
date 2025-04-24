@@ -51,7 +51,7 @@ trait HasMeta
         }
     }
 
-    public function addRobots(string $robots): void
+    public function addRobots(?string $robots): void
     {
         $meta = $this->meta()->first() ?? new Meta(['payload' => new \stdClass()]);
 
