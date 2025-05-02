@@ -12,6 +12,11 @@ trait HasMeta
         return $this->morphOne(Meta::class, 'seoable');
     }
 
+    public function addMetaTitle(string $title, ?string $lang = null): void
+    {
+        $this->addMeta('title', $title, $lang);
+    }
+
     public function addMetaDescription(string $description, ?string $lang = null): void
     {
         $this->addMeta('description', $description, $lang);
