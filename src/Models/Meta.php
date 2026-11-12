@@ -18,9 +18,9 @@ class Meta extends Model
     protected $table = 'seo_meta';
 
     protected $fillable = [
-        "seoable",
-        "payload",
-        "robots",
+        'seoable',
+        'payload',
+        'robots',
     ];
 
     protected $casts = [
@@ -50,6 +50,6 @@ class Meta extends Model
         return $this->payload->$lang
             ?? $this->payload->$langDefault
             ?? $this->payload->$langFallback
-            ?? new stdClass();
+            ?? new stdClass;
     }
 }

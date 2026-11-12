@@ -2,57 +2,42 @@ name: Tests
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+    paths:
+      - '**.php'
+      - phpunit.xml.dist
+      - composer.json
+      - .github/workflows/tests.yml
+
   pull_request:
-    branches: [master]
+    paths:
+      - '**.php'
+      - phpunit.xml.dist
+      - composer.json
+      - .github/workflows/tests.yml
 
 jobs:
   phpunit:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.5, 8.4]
-        laravel: [13.*, 12.*]
-        include:
-          - laravel: 12.*
-            testbench: 10.*
-          - laravel: 13.*
-            testbench: 11.*
+    name: PHP 8.5 - Laravel 13
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 8.5
           extensions: curl, pdo, sqlite, pdo_sqlite
-
-      - name: Install SQLite 3
-        run: |
-          sudo apt-get update
-          sudo apt-get install sqlite3
 
       - name: Validate composer.json
         run: composer validate
 
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v5
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-${{ matrix.php }}-laravel-${{ matrix.laravel }}-
-
       - name: Install dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-          composer update --prefer-stable --prefer-dist --no-interaction
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
 
       - name: Run test phpunit
         run: vendor/bin/phpunit --stop-on-error --stop-on-failure

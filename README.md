@@ -1,7 +1,8 @@
 # DescomMarket Seo
 
 [![tests](https://github.com/descom-es/descommarket-seo/actions/workflows/tests.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/tests.yml)
-[![analyze](https://github.com/descom-es/descommarket-seo/actions/workflows/analyze.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/analyze.yml)
+[![analyse](https://github.com/descom-es/descommarket-seo/actions/workflows/analyse.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/analyse.yml)
+[![lint](https://github.com/descom-es/descommarket-seo/actions/workflows/lint.yml/badge.svg)](https://github.com/descom-es/descommarket-seo/actions/workflows/lint.yml)
 
 ## Installation
 
