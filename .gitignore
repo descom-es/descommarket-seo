@@ -1,5 +1,3 @@
-.php_cs
-.php_cs.cache
 .phpunit.result.cache
 build
 composer.lock
@@ -7,5 +5,4 @@ coverage
 phpunit.xml
 vendor
 node_modules
-.php-cs-fixer.cache
 .vscode
