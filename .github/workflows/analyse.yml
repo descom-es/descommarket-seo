@@ -1,0 +1,35 @@
+name: Analyse
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**.php'
+      - phpstan.neon.dist
+      - .github/workflows/analyse.yml
+
+  pull_request:
+    paths:
+      - '**.php'
+      - phpstan.neon.dist
+      - .github/workflows/analyse.yml
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: 8.5
+
+      - name: Install dependencies
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
+
+      - name: Run analyse phpstan
+        run: vendor/bin/phpstan analyse --error-format github
