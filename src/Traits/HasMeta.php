@@ -9,7 +9,6 @@ trait HasMeta
 {
     public static function bootHasMeta(): void
     {
-        // seo_meta es polimórfica: la BD no puede borrarla en cascada.
         static::deleted(function (self $model) {
             $model->meta()->delete();
         });
