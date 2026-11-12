@@ -27,7 +27,7 @@ trait HasMeta
     public function addMeta(string $key, string $value, ?string $lang = null): void
     {
         $meta = $this->meta()->first() ?? new Meta([
-            'payload' => new \stdClass(),
+            'payload' => new \stdClass,
         ]);
 
         $lang = $lang ?? config('app.locale');
@@ -60,7 +60,7 @@ trait HasMeta
 
     public function addRobots(?string $robots): void
     {
-        $meta = $this->meta()->first() ?? new Meta(['payload' => new \stdClass()]);
+        $meta = $this->meta()->first() ?? new Meta(['payload' => new \stdClass]);
 
         $meta->robots = $robots;
         $this->meta()->save($meta);

@@ -10,7 +10,7 @@ class AddMetaDescriptionTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCreateMetaDescription()
+    public function test_create_meta_description()
     {
         $demo = Demo::first();
 
@@ -24,7 +24,7 @@ class AddMetaDescriptionTest extends TestCase
             'payload->es->description' => $es,
         ]);
 
-        $demo->addMetaDescription($en, "en");
+        $demo->addMetaDescription($en, 'en');
 
         $this->assertDatabaseHas('seo_meta', [
             'seoable_id' => $demo->getKey(),
@@ -33,7 +33,7 @@ class AddMetaDescriptionTest extends TestCase
         ]);
     }
 
-    public function testCreateMetasDescriptionArray()
+    public function test_create_metas_description_array()
     {
         $demo = Demo::first();
 

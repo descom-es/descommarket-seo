@@ -11,7 +11,7 @@ class ResourceTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCreateMeta()
+    public function test_create_meta()
     {
         $demo = Demo::first();
 
@@ -24,7 +24,7 @@ class ResourceTest extends TestCase
         $this->assertEquals($json->meta->description_short, 'ermejo');
     }
 
-    public function testCreateMeta2()
+    public function test_create_meta2()
     {
         $demo = Demo::with('meta')->first();
 

@@ -11,7 +11,7 @@ class DeleteMetaTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testAlBorrarElModeloSeBorraSuMeta()
+    public function test_al_borrar_el_modelo_se_borra_su_meta()
     {
         $demo = Demo::first();
         $other = Demo::create([]);
