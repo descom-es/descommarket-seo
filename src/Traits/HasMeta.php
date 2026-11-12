@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasMeta
 {
+    public static function bootHasMeta(): void
+    {
+        static::deleted(function (self $model) {
+            $model->meta()->delete();
+        });
+    }
+
     public function meta(): MorphOne
     {
         return $this->morphOne(Meta::class, 'seoable');
